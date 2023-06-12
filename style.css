@@ -1,10 +1,20 @@
 body {
-  background-color: #272643;
-  color: #272643;
+  background-color: #1f53b6;
+  color: #0a0a0a;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+h1{
+  color:#2c698d
+}
+
+td,th {
+  color:#2c698d;
+  border: 1px solid black;
+  padding: 8px;
+}
+
 div {
-  margin: 5px;
+  margin: 8px;
 }
 .contain {
   margin: 1%;
@@ -22,7 +32,7 @@ div {
 .input-bar {
   justify-content: center;
   padding: 4px;
-  color: #272643;
+  color:#2c698d;
   background-color: #ffffff;
   border: solid #ffffff;
   padding: 3px;
@@ -37,13 +47,13 @@ tr{
   border-color: black solid 2px;
 }
 tr:hover {
-  background-color: #272643;
+  background-color: #427eee;
   color: #bae8e8;
 }
 button {
   font-size: medium;
-  background-color: #272643;
-  color: #ffffff;
+  background-color: #7095da;
+  color: #080808;
   padding: 5px;
   border-radius: 12%;
 }

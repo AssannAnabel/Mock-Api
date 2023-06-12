@@ -23,8 +23,8 @@ function getUsers() {// conseguir
           row.insertCell().textContent = user.name;
           row.insertCell().textContent = user.email;
           row.insertCell().textContent = user.phone;
-          row.insertCell().innerHTML = `<button onclick="deleteOne(${user.id})">Eliminar</button>`;
-          row.insertCell().innerHTML = `<button onclick="upDateOne(${user.id})">Modificar</button>`;
+          row.insertCell().innerHTML = `<button onclick="deleteOne(${user.id})"><i class="fa-sharp fa-solid fa-trash"></i></button>`;
+          row.insertCell().innerHTML = `<button onclick="upDateOne(${user.id})"><i class="fa-solid fa-user-pen"></i></button>`;
         });
       })
       .catch(err => console.error(err));
@@ -63,7 +63,7 @@ function getUsers() {// conseguir
       })
       .catch((err) => console.error(err));
   }
-  function userModified() {
+  /*function userModified() {
     const user = {
       name: nuevoName.value,
       email: nuevoEmail.value,
@@ -84,9 +84,7 @@ function getUsers() {// conseguir
       modifier(id, user1);
     });
   }
-  
-  
-  function modifier(id, usuario) {
+    function modifier(id, usuario) {
     fetch(BASE_URL + `/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -100,4 +98,62 @@ function getUsers() {// conseguir
       .catch((err) => console.error(err));
   }
   
-  getUsers();//carga página
+  getUsers();//carga página*/
+
+  function getUserUrl(id) {// creo funcion que me trae la data
+    return fetch(BASE_URL + `/${id}`)
+      .then(res => res.json())
+      .catch(err => console.error(err));
+  }
+  
+  function userModified() {
+    const user = {
+      name: nuevoName.value,
+      email: nuevoEmail.value,
+      phone: nuevoPhone.value,
+    };
+    return user;
+  }
+  function upDateOne(id) {
+    let user1 = undefined;
+    modal.showModal();
+        getUserUrl(id) // Obtener el usuario por su ID
+      .then(user => {
+        nuevoName.value = user.name;
+        nuevoEmail.value = user.email;
+        nuevoPhone.value = user.phone;
+        closeModal.addEventListener("click", () => {
+          modal.close();
+          
+        });
+  
+        form.addEventListener("submit", (event) => {
+          user1 = userModified();
+          modifier(id, user1);
+          
+        });
+      })
+      .catch(err => console.error(err));
+  }
+  
+  function modifier(id, usuario) {
+    fetch(BASE_URL + `/${id}`, {
+      method: "PUT",// modifica y envia datos.
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(usuario),
+    })
+      .then(() => {
+        getUsers();
+        modal.close();
+      })
+      .catch((err) => console.error(err));
+  }
+  
+  getUsers();
+  
+  
+  
+  
+  
+  
+  

@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mock-Api</title>
     <link rel="stylesheet" href="style.css"> 
+    <script src="https://kit.fontawesome.com/5cc4dc8afd.js" crossorigin="anonymous"></script>
     <script src="index.js" defer></script>
+    
 </head>
 <body>
     <div class="contain">
@@ -52,15 +54,18 @@
     <label for="phone">Teléfono:</label>
     <input type="tel" id="phone" />
     <button onclick="createUser()">Agregar Usuario</button>
+   
   </div>
   <div class="table">
   <table>
-    <thead>
+    <thead></thead>
       <th>ID</th>
       <th>Nombre</th>
       <th>Email</th>
       <th>Teléfono</th>
-    </thead>>
+      <th>Acciones</th>
+      
+    </thead>
     <tbody id="usersTable"></tbody>
   </table>
   </div>
